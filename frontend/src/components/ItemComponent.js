@@ -4,9 +4,9 @@ import axios from 'axios'
 export default function ItemComponent() {
 
     const checkoutHandler = async (amount) => {
-        const { data: { key } } = await axios.get("http://www.localhost:4000/api/getkey")
+        const { data: { key } } = await axios.get("https://razorpay-server.vercel.app/api/getkey")
 
-        const { data: { order } } = await axios.post("http://localhost:4000/api/checkout", {
+        const { data: { order } } = await axios.post("https://razorpay-server.vercel.app/api/checkout", {
             amount
         })
         const options = {
@@ -17,13 +17,13 @@ export default function ItemComponent() {
             description: "Tutorial of RazorPay",
             image: "https://avatars.githubusercontent.com/u/128721569?s=400&u=09e224af181df700e0f1af9ab888b6355a39e0ff&v=4",
             order_id: order.id,
-            callback_url: "http://localhost:4000/api/paymentverification",
+            callback_url: "https://razorpay-server.vercel.app/api/paymentverification",
 
             // handler: function (response) {
 
             //     console.log("Handler resp = ", response);
             //     console.log(response);
-            //     axios.post('http://localhost:4000/api/paymentverification', {
+            //     axios.post('https://razorpay-server.vercel.app/api/paymentverification', {
             //         razorpay_payment_id: response.razorpay_payment_id,
             //         razorpay_order_id: response.razorpay_order_id,
             //         razorpay_signature: response.razorpay_signature
